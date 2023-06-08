@@ -17,6 +17,17 @@ struct ContentView: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
+                VStack{
+                    Text("Bloom Buddy")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .foregroundColor(.green)
+                                    
+                        Text("Bridging Seeds and Sustainability")
+                        .font(.headline)
+                        .foregroundColor(.green)
+                    }
+                .padding(.top, 50)
                 
                 Spacer() // Pushes leaf into middle of screen
                 
