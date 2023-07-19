@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>557004991375-5cuvd7q9lrjbs02ogirkf10jqdnso0mj.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.557004991375-5cuvd7q9lrjbs02ogirkf10jqdnso0mj</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDClfTC9_SHxIDXXv-qBuif7PJ8S91DQTg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>557004991375</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>kole-company.nativePlants</string>
+	<key>PROJECT_ID</key>
+	<string>bloom-buddy-5a3fb</string>
+	<key>STORAGE_BUCKET</key>
+	<string>bloom-buddy-5a3fb.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:557004991375:ios:52bf9b6f98662cc23ab9fa</string>
+</dict>
+</plist>

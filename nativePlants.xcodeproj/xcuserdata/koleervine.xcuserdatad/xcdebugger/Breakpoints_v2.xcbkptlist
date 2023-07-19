@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "B8178846-B77E-4E01-BA0B-36F67147979E"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F0F5B9EC-C667-45FE-831E-840735D774C0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "nativePlants/Controllers/ApiController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "10"
+            endingLineNumber = "10"
+            landmarkName = "APIController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "F0F5B9EC-C667-45FE-831E-840735D774C0 - 917ae7fb4338a291"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of nativePlants.APIController.plants : Swift.Array&lt;nativePlants.Plant&gt;"
+                  moduleName = "nativePlants"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/koleervine/Documents/MTEC/PROJECTS/BloomBuddy/nativePlants/Controllers/ApiController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "9"
+                  endingLineNumber = "9"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "F0F5B9EC-C667-45FE-831E-840735D774C0 - a88868299ba0f285"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "nativePlants.APIController.plants.getter : Swift.Array&lt;nativePlants.Plant&gt;"
+                  moduleName = "nativePlants"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/koleervine/Documents/MTEC/PROJECTS/BloomBuddy/nativePlants/Controllers/ApiController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "9"
+                  endingLineNumber = "9"
+                  offsetFromSymbolStart = "112">
+               </Location>
+               <Location
+                  uuid = "F0F5B9EC-C667-45FE-831E-840735D774C0 - 3208770a15d2cef1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "nativePlants.APIController.plants.setter : Swift.Array&lt;nativePlants.Plant&gt;"
+                  moduleName = "nativePlants"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/koleervine/Documents/MTEC/PROJECTS/BloomBuddy/nativePlants/Controllers/ApiController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "9"
+                  endingLineNumber = "9"
+                  offsetFromSymbolStart = "140">
+               </Location>
+               <Location
+                  uuid = "F0F5B9EC-C667-45FE-831E-840735D774C0 - ed29dfdd62e84380"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "nativePlants.APIController.plants.modify : Swift.Array&lt;nativePlants.Plant&gt;"
+                  moduleName = "nativePlants"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/koleervine/Documents/MTEC/PROJECTS/BloomBuddy/nativePlants/Controllers/ApiController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "9"
+                  endingLineNumber = "9"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "F0F5B9EC-C667-45FE-831E-840735D774C0 - 8833b90c8e15575f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "nativePlants.APIController.plants.modify : Swift.Array&lt;nativePlants.Plant&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "nativePlants"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/koleervine/Documents/MTEC/PROJECTS/BloomBuddy/nativePlants/Controllers/ApiController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "9"
+                  endingLineNumber = "9"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "F0F5B9EC-C667-45FE-831E-840735D774C0 - dff6b2a9a86ac1e4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "nativePlants.APIController.$plants.getter : Combine.Published&lt;Swift.Array&lt;nativePlants.Plant&gt;&gt;.Publisher"
+                  moduleName = "nativePlants"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/koleervine/Documents/MTEC/PROJECTS/BloomBuddy/nativePlants/Controllers/ApiController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "9"
+                  endingLineNumber = "9"
+                  offsetFromSymbolStart = "96">
+               </Location>
+               <Location
+                  uuid = "F0F5B9EC-C667-45FE-831E-840735D774C0 - dff6b2a9a86ac1e4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "nativePlants.APIController.$plants.setter : Combine.Published&lt;Swift.Array&lt;nativePlants.Plant&gt;&gt;.Publisher"
+                  moduleName = "nativePlants"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/koleervine/Documents/MTEC/PROJECTS/BloomBuddy/nativePlants/Controllers/ApiController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "9"
+                  endingLineNumber = "9"
+                  offsetFromSymbolStart = "196">
+               </Location>
+               <Location
+                  uuid = "F0F5B9EC-C667-45FE-831E-840735D774C0 - f95cc2133c577291"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "nativePlants.APIController.$plants.modify : Combine.Published&lt;Swift.Array&lt;nativePlants.Plant&gt;&gt;.Publisher"
+                  moduleName = "nativePlants"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/koleervine/Documents/MTEC/PROJECTS/BloomBuddy/%3Ccompiler-generated%3E"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "F0F5B9EC-C667-45FE-831E-840735D774C0 - 15816ebe5b5da933"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "nativePlants.APIController.$plants.modify : Combine.Published&lt;Swift.Array&lt;nativePlants.Plant&gt;&gt;.Publisher with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "nativePlants"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/koleervine/Documents/MTEC/PROJECTS/BloomBuddy/nativePlants/Controllers/ApiController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "9"
+                  endingLineNumber = "9"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  uuid = "F0F5B9EC-C667-45FE-831E-840735D774C0 - 40a8696bbd313ade"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "nativePlants.APIController.init() -&gt; nativePlants.APIController"
+                  moduleName = "nativePlants"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/koleervine/Documents/MTEC/PROJECTS/BloomBuddy/nativePlants/Controllers/ApiController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "9"
+                  endingLineNumber = "9"
+                  offsetFromSymbolStart = "204">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
