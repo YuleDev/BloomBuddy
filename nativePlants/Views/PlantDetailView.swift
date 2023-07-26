@@ -3,6 +3,8 @@ import Combine
 import SwiftUI
 
 struct PlantDetailView: View {
+    let selectedZone = UserDefaults.standard.string(forKey: "selectedZone")
+    
     @ObservedObject var apiController: APIController
     let plant: Plant
     
@@ -33,7 +35,7 @@ struct PlantDetailView: View {
         }
 
         for region in nativeRegions {
-            if region.lowercased() == "utah" {
+            if region.lowercased() == selectedZone?.lowercased() {
                 return "This plant is native"
             }
         }

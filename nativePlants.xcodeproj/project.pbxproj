@@ -31,6 +31,9 @@
 		0F46CA572A57B24900529245 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 0F46CA562A57B24900529245 /* FirebaseStorage */; };
 		0F46CA592A57B24900529245 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 0F46CA582A57B24900529245 /* FirebaseStorageCombine-Community */; };
 		0F46CA612A5C3F8100529245 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0F46CA602A5C3F8100529245 /* GoogleService-Info.plist */; };
+		0FA514352A70A53900A07094 /* DistributionZoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA514342A70A53900A07094 /* DistributionZoneView.swift */; };
+		0FA514372A70A64E00A07094 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA514362A70A64E00A07094 /* SearchBar.swift */; };
+		0FA514392A70A66900A07094 /* DistributionZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA514382A70A66900A07094 /* DistributionZone.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +58,9 @@
 		0F46CA4B2A51385100529245 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		0F46CA4F2A5167DF00529245 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		0F46CA602A5C3F8100529245 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0FA514342A70A53900A07094 /* DistributionZoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistributionZoneView.swift; sourceTree = "<group>"; };
+		0FA514362A70A64E00A07094 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		0FA514382A70A66900A07094 /* DistributionZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistributionZone.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +123,8 @@
 				0F46CA392A4E786400529245 /* PlantFromList.swift */,
 				0F46CA3D2A4E7E4400529245 /* SinglePlantDetail.swift */,
 				0F46CA2F2A4E733C00529245 /* SimpleLeaf.swift */,
+				0FA514362A70A64E00A07094 /* SearchBar.swift */,
+				0FA514382A70A66900A07094 /* DistributionZone.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -127,6 +135,7 @@
 				0F0D99B22A29B3AF00B42E2E /* nativePlantsApp.swift */,
 				0F0D99B42A29B3AF00B42E2E /* ContentView.swift */,
 				0F46CA452A4EB1C500529245 /* PlantListView.swift */,
+				0FA514342A70A53900A07094 /* DistributionZoneView.swift */,
 				0F46CA472A4EB1F600529245 /* PlantDetailView.swift */,
 				0F46CA432A4EB14400529245 /* PlantCellView.swift */,
 				0F46CA352A4E760500529245 /* AnimationView.swift */,
@@ -228,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F46CA342A4E74E800529245 /* AnimationController.swift in Sources */,
+				0FA514392A70A66900A07094 /* DistributionZone.swift in Sources */,
 				0F0D99BC2A29B3B000B42E2E /* Persistence.swift in Sources */,
 				0F46CA4C2A51385100529245 /* ImageCache.swift in Sources */,
 				0F46CA3C2A4E7CB600529245 /* PlantList.swift in Sources */,
@@ -235,12 +245,14 @@
 				0F46CA3A2A4E786400529245 /* PlantFromList.swift in Sources */,
 				0F46CA442A4EB14400529245 /* PlantCellView.swift in Sources */,
 				0F46CA482A4EB1F600529245 /* PlantDetailView.swift in Sources */,
+				0FA514352A70A53900A07094 /* DistributionZoneView.swift in Sources */,
 				0F46CA3E2A4E7E4400529245 /* SinglePlantDetail.swift in Sources */,
 				0F0D99B52A29B3AF00B42E2E /* ContentView.swift in Sources */,
 				0F46CA4A2A51284E00529245 /* VineBorder.swift in Sources */,
 				0F0D99BF2A29B3B000B42E2E /* nativePlants.xcdatamodeld in Sources */,
 				0F46CA382A4E77E000529245 /* ApiController.swift in Sources */,
 				0F46CA462A4EB1C500529245 /* PlantListView.swift in Sources */,
+				0FA514372A70A64E00A07094 /* SearchBar.swift in Sources */,
 				0F46CA362A4E760500529245 /* AnimationView.swift in Sources */,
 				0F0D99B32A29B3AF00B42E2E /* nativePlantsApp.swift in Sources */,
 				0F46CA302A4E733C00529245 /* SimpleLeaf.swift in Sources */,

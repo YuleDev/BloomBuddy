@@ -2,6 +2,8 @@ import Foundation
 import Combine
 
 class APIController: ObservableObject {
+    var currentDistributionZone: String = ""
+    
     private var plantListPublisher: AnyPublisher<PlantList, Error>?
     private var plantDetailPublisher: AnyPublisher<PlantDetail, Error>?
     
@@ -17,6 +19,7 @@ class APIController: ObservableObject {
     private var token = "nnVcvYtNoWnb2Udxs4upkjiYftZwbljX6X52h-XCBtI"
     
     func fetchPlantList(fromDistributionZone distributionZone: String) {
+        currentDistributionZone = distributionZone
         guard let url = URL(string: "\(baseUrl)distributions/\(distributionZone)/plants?token=\(token)&page=\(currentPage)") else {
             print("Invalid URL")
             return
@@ -52,7 +55,7 @@ class APIController: ObservableObject {
         }
         
         currentPage += 1
-        fetchPlantList(fromDistributionZone: "UTA")
+        fetchPlantList(fromDistributionZone: currentDistributionZone)
     }
 
     func fetchPlantDetail(plantID: Int) {

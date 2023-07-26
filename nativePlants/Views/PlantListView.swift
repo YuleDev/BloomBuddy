@@ -3,6 +3,7 @@ import SwiftUI
 
 struct PlantListView: View {
     @ObservedObject var apiController: APIController
+    var selectedZone: String
 
     var body: some View {
         NavigationView {
@@ -17,7 +18,8 @@ struct PlantListView: View {
                 }
             }
             .onAppear {
-                self.apiController.fetchPlantList(fromDistributionZone: "UTA")
+                self.apiController.currentDistributionZone = self.selectedZone // Set the current distribution zone
+                self.apiController.fetchPlantList(fromDistributionZone: selectedZone)
             }
         }
     }

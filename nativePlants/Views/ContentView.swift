@@ -19,8 +19,10 @@ struct ContentView: View {
             }
             .padding(.top, 50)
             
-// AnimationView(animationController: animationController)
-            PlantListView(apiController: apiController)
+            // AnimationView(animationController: animationController)
+            // PlantListView(apiController: apiController)
+            
+            DistributionZoneView()
         }
     }
 }
