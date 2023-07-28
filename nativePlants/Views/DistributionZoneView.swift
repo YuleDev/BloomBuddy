@@ -23,7 +23,7 @@ struct DistributionZoneView: View {
                 SearchBar(text: $searchText)
                 List(filteredDistributionZones) { zone in
                     NavigationLink(destination: PlantListView(apiController: APIController(), selectedZone: zone.code)) {
-                        Text("\(zone.code): \(zone.name)")
+                        Text("\(zone.name)")
                     }.onTapGesture {
                         saveSelectedZone(zone: zone)
                     }
