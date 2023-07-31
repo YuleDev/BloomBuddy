@@ -41,7 +41,7 @@ struct DistributionZoneView: View {
 // Assuming we have this function to load the distribution zones.
 func loadDistributionZones() -> [DistributionZone] {
     // Replace this with your actual data loading logic
-    return [
+    var distributionZoneArray = [
         DistributionZone(code: "1", name: "Europe"),
         DistributionZone(code: "10", name: "Northern Europe"),
         DistributionZone(code: "DEN", name: "Denmark"),
@@ -787,4 +787,8 @@ func loadDistributionZones() -> [DistributionZone] {
         DistributionZone(code: "91", name: "Antarctic Continent"),
         DistributionZone(code: "ANT", name: "Antarctica")
     ]
+    
+    let sortedDistributionZones = distributionZoneArray.sorted { $0.name < $1.name }
+    
+    return sortedDistributionZones
 }
