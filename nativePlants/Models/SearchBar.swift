@@ -3,6 +3,7 @@ import SwiftUI
 
 struct SearchBar: UIViewRepresentable {
     @Binding var text: String
+    var placeholderText: String = "Or type your location here!"
 
     class Coordinator: NSObject, UISearchBarDelegate {
         @Binding var text: String
@@ -23,6 +24,7 @@ struct SearchBar: UIViewRepresentable {
     func makeUIView(context: UIViewRepresentableContext<SearchBar>) -> UISearchBar {
         let searchBar = UISearchBar(frame: .zero)
         searchBar.delegate = context.coordinator
+        searchBar.placeholder = placeholderText
         return searchBar
     }
 

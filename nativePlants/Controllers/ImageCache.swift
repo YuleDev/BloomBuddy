@@ -2,13 +2,13 @@ import Foundation
 import SwiftUI
 
 class ImageCache: ObservableObject {
-    private var cache: NSCache<NSString, UIImage> = NSCache()
+    @Published private(set) var cache = [String: UIImage]()
     
-    func add(_ image: UIImage, for url: String) {
-        cache.setObject(image, forKey: url as NSString)
+    func get(for urlString: String) -> UIImage? {
+        cache[urlString]
     }
     
-    func get(for url: String) -> UIImage? {
-        cache.object(forKey: url as NSString)
+    func add(_ image: UIImage, for urlString: String) {
+        cache[urlString] = image
     }
 }

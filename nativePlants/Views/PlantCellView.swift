@@ -3,8 +3,9 @@ import SwiftUI
 
 struct PlantCellView: View {
     @EnvironmentObject var imageCache: ImageCache
+    @State var isImageLoading: Bool = true
     let plant: Plant
-
+    
     var body: some View {
         HStack {
             if let url = URL(string: plant.imageURL ?? "") {
@@ -20,9 +21,12 @@ struct PlantCellView: View {
                         .onAppear {
                             URLSession.shared.dataTask(with: url) { (data, response, error) in
                                 if let data = data, let image = UIImage(data: data) {
-                                    imageCache.add(image, for: url.absoluteString)
+                                    DispatchQueue.main.async { // Ensures you are performing UI updates on main thread.
+                                        imageCache.add(image, for: url.absoluteString)
+                                    }
                                 }
-                            }.resume()
+                            }
+                            .resume()
                         }
                 }
             }
