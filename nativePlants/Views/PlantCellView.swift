@@ -21,7 +21,7 @@ struct PlantCellView: View {
                         .onAppear {
                             URLSession.shared.dataTask(with: url) { (data, response, error) in
                                 if let data = data, let image = UIImage(data: data) {
-                                    DispatchQueue.main.async { // Ensures you are performing UI updates on main thread.
+                                    DispatchQueue.main.async { // ensure you are performing UI updates on main thread.
                                         imageCache.add(image, for: url.absoluteString)
                                     }
                                 }

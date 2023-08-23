@@ -24,9 +24,10 @@ struct DistributionZoneView: View {
                 List(filteredDistributionZones) { zone in
                     NavigationLink(destination: PlantListView(apiController: APIController(), selectedZone: zone.code)) {
                         Text("\(zone.name)")
-                    }.onTapGesture {
-                        saveSelectedZone(zone: zone)
                     }
+//                    .onTapGesture {
+//                        saveSelectedZone(zone: zone)
+//                    }
                 }
             }
         }
@@ -40,7 +41,7 @@ struct DistributionZoneView: View {
 
 func loadDistributionZones() -> [DistributionZone] {
     // unsorted array below
-    var distributionZoneArray = [
+    let distributionZoneArray = [
         DistributionZone(code: "1", name: "Europe"),
         DistributionZone(code: "10", name: "Northern Europe"),
         DistributionZone(code: "DEN", name: "Denmark"),

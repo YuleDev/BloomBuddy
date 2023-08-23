@@ -59,20 +59,20 @@ struct MainSpecies: Codable {
     let family_common_name: String?
     let genus_id: Int
     let observations: String
-    let vegetable: Bool
+    let vegetable: Bool?
     let image_url: String
     let genus: String
     let family: String
     // let duration: null,
     // edible_part: null,
-    let edible: Bool
+    let edible: Bool?
     let images: Images
     // let common_names is a big list of names from different regions and languages
     let distribution: Distribution
 }
 
 struct Images: Codable {
-    let flower: [Flower]
+    let flower: [Flower]?
     let leaf: [Leaf]
     let fruit: [Fruit]
     let bark: [Bark]

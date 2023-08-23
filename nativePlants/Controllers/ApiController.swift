@@ -72,7 +72,7 @@ class APIController: ObservableObject {
         // this allows for printing of the json string
             .map{data in
                 let prettyPrintedString = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
-                print(prettyPrintedString!)
+                // print(prettyPrintedString!)
                 return data
             }
             .decode(type: PlantDetailResponse.self, decoder: decoder)
@@ -85,7 +85,7 @@ class APIController: ObservableObject {
             case .finished:
                 break
             case .failure(let error):
-                print("Error: \(error)")
+                print("Error: \(error) LOOK ABOVE DUMMY")
             }
         }, receiveValue: { [weak self] plantDetail in
             self?.plantDetail = plantDetail
@@ -96,5 +96,10 @@ class APIController: ObservableObject {
     func cancelAllTasks() {
         cancellables.forEach { $0.cancel() }
         cancellables.removeAll()
+    }
+    
+    // for clearing details for showing proper images
+    func clearPlantDetails() {
+        self.plantDetail = nil
     }
 }

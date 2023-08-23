@@ -6,7 +6,6 @@ struct PlantListView: View {
     var selectedZone: String
 
     var body: some View {
-        NavigationView {
             List {
                 ForEach(apiController.plants, id: \.id) { plant in
                     NavigationLink(destination: PlantDetailView(apiController: apiController, plant: plant)) {
@@ -21,6 +20,5 @@ struct PlantListView: View {
                 self.apiController.currentDistributionZone = self.selectedZone // Set the current distribution zone
                 self.apiController.fetchPlantList(fromDistributionZone: selectedZone)
             }
-        }
     }
 }

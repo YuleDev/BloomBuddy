@@ -6,11 +6,40 @@ struct PlantDetailView: View {
     let selectedZone = UserDefaults.standard.string(forKey: "selectedZone")
     
     @ObservedObject var apiController: APIController
+    @EnvironmentObject var imageCache: ImageCache
+    @State var isImageLoading: Bool = true
     let plant: Plant
+    
+    @State private var leafImages: [URL] = []
+    @State private var barkImages: [URL] = []
+    @State private var flowerImages: [URL] = []
+    @State private var fruitImages: [URL] = []
+    @State private var habitImages: [URL] = []
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
+                if let urlString = apiController.plantDetail?.image_url, let url = URL(string: urlString) {
+                    if let image = imageCache.get(for: url.absoluteString) {
+                        Image(uiImage: image)
+                            .resizable()
+                            .scaledToFit()
+                            .cornerRadius(10)
+                    } else {
+                        ProgressView()
+                            .onAppear {
+                                URLSession.shared.dataTask(with: url) { (data, response, error) in
+                                    if let data = data, let image = UIImage(data: data) {
+                                        DispatchQueue.main.async { // ensure you are performing UI updates on main thread.
+                                            imageCache.add(image, for: url.absoluteString)
+                                        }
+                                    }
+                                }
+                                .resume()
+                            }
+                    }
+                }
+                
                 Text(apiController.plantDetail?.common_name ?? "No common name")
                     .font(.title)
                 Text(apiController.plantDetail?.scientific_name ?? "No scientific name")
@@ -20,26 +49,36 @@ struct PlantDetailView: View {
                 Text("Observations: \(apiController.plantDetail?.observations ?? "No observations")")
                     .font(.subheadline)
                 Text("nativity: \(nativityDetermination())")
+                    .foregroundColor(self.nativityDetermination() == "This plant is native" ? .green : .red)
+                    .fontWeight(self.nativityDetermination() == "This plant is native" ? .light : .heavy)
+                
+                Text("Here are some images of the leaves for better identification.")
+                    .underline()
+                if let leafs = apiController.plantDetail?.main_species.images.leaf {
+                    ImageCarouselView(imageUrls: leafs.compactMap { URL(string: $0.image_url) })
+                        .frame(height: 300) // Adjust the frame as necessary
+                }
             }
             .padding()
             .navigationBarTitleDisplayMode(.inline)
         }
         .onAppear {
+            apiController.clearPlantDetails()
             apiController.fetchPlantDetail(plantID: plant.id)
         }
     }
-    
-    func nativityDetermination() -> String {
-        guard let nativeRegions = apiController.plantDetail?.main_species.distribution.native else {
-            return "This plant's nativity is unknown"
-        }
-
-        for region in nativeRegions {
-            if region.lowercased() == selectedZone?.lowercased() {
-                return "This plant is native"
-            }
-        }
         
-        return "This plant is not native"
+        func nativityDetermination() -> String {
+            guard let nativeRegions = apiController.plantDetail?.main_species.distribution.native else {
+                return "This plant's nativity is unknown"
+            }
+            
+            for region in nativeRegions {
+                if region.lowercased() == selectedZone?.lowercased() {
+                    return "This plant is native"
+                }
+            }
+            
+            return "This plant is not native"
+        }
     }
-}
