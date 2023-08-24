@@ -26,6 +26,7 @@
 		0F46CA4A2A51284E00529245 /* VineBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F46CA492A51284E00529245 /* VineBorder.swift */; };
 		0F46CA4C2A51385100529245 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F46CA4B2A51385100529245 /* ImageCache.swift */; };
 		0F46CA502A5167DF00529245 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F46CA4F2A5167DF00529245 /* LoadingView.swift */; };
+		0F5F774B2A97AB200024CCBB /* DistributionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F774A2A97AB200024CCBB /* DistributionData.swift */; };
 		0FA514352A70A53900A07094 /* DistributionZoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA514342A70A53900A07094 /* DistributionZoneView.swift */; };
 		0FA514372A70A64E00A07094 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA514362A70A64E00A07094 /* SearchBar.swift */; };
 		0FA514392A70A66900A07094 /* DistributionZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA514382A70A66900A07094 /* DistributionZone.swift */; };
@@ -55,6 +56,7 @@
 		0F46CA492A51284E00529245 /* VineBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VineBorder.swift; sourceTree = "<group>"; };
 		0F46CA4B2A51385100529245 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		0F46CA4F2A5167DF00529245 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		0F5F774A2A97AB200024CCBB /* DistributionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistributionData.swift; sourceTree = "<group>"; };
 		0FA514342A70A53900A07094 /* DistributionZoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistributionZoneView.swift; sourceTree = "<group>"; };
 		0FA514362A70A64E00A07094 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		0FA514382A70A66900A07094 /* DistributionZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistributionZone.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				0FA514362A70A64E00A07094 /* SearchBar.swift */,
 				0FA514382A70A66900A07094 /* DistributionZone.swift */,
 				0FE932B62A93A4D40030766C /* CarouselImage.swift */,
+				0F5F774A2A97AB200024CCBB /* DistributionData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				0F46CA442A4EB14400529245 /* PlantCellView.swift in Sources */,
 				0F46CA482A4EB1F600529245 /* PlantDetailView.swift in Sources */,
 				0FA514352A70A53900A07094 /* DistributionZoneView.swift in Sources */,
+				0F5F774B2A97AB200024CCBB /* DistributionData.swift in Sources */,
 				0F46CA3E2A4E7E4400529245 /* SinglePlantDetail.swift in Sources */,
 				0F0D99B52A29B3AF00B42E2E /* ContentView.swift in Sources */,
 				0F46CA4A2A51284E00529245 /* VineBorder.swift in Sources */,
