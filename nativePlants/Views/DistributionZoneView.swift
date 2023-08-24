@@ -41,7 +41,7 @@ struct DistributionZoneView: View {
 
 func loadDistributionZones() -> [DistributionZone] {
     // unsorted array below
-    let distributionZoneArray = [
+    let completeDistributionZonesArray = [
         DistributionZone(code: "1", name: "Europe"),
         DistributionZone(code: "10", name: "Northern Europe"),
         DistributionZone(code: "DEN", name: "Denmark"),
@@ -788,9 +788,68 @@ func loadDistributionZones() -> [DistributionZone] {
         DistributionZone(code: "ANT", name: "Antarctica")
     ]
     
-    // sort the array
-    let sortedDistributionZones = distributionZoneArray.sorted { $0.name < $1.name }
+    var americanDistributionZonesArray: [DistributionZone] = [
+        DistributionZone(code: "ALU", name: "Aleutian Is."),
+        DistributionZone(code: "ASK", name: "Alaska"),
+        DistributionZone(code: "COL", name: "Colorado"),
+        DistributionZone(code: "IDA", name: "Idaho"),
+        DistributionZone(code: "MNT", name: "Montana"),
+        DistributionZone(code: "ORE", name: "Oregon"),
+        DistributionZone(code: "WAS", name: "Washington"),
+        DistributionZone(code: "WYO", name: "Wyoming"),
+        DistributionZone(code: "ILL", name: "Illinois"),
+        DistributionZone(code: "IOW", name: "Iowa"),
+        DistributionZone(code: "KAN", name: "Kansas"),
+        DistributionZone(code: "MIN", name: "Minnesota"),
+        DistributionZone(code: "MSO", name: "Missouri"),
+        DistributionZone(code: "NDA", name: "North Dakota"),
+        DistributionZone(code: "NEB", name: "Nebraska"),
+        DistributionZone(code: "OKL", name: "Oklahoma"),
+        DistributionZone(code: "SDA", name: "South Dakota"),
+        DistributionZone(code: "WIS", name: "Wisconsin"),
+        DistributionZone(code: "CNT", name: "Connecticut"),
+        DistributionZone(code: "INI", name: "Indiana"),
+        DistributionZone(code: "MAI", name: "Maine"),
+        DistributionZone(code: "MAS", name: "Massachusetts"),
+        DistributionZone(code: "MIC", name: "Michigan"),
+        DistributionZone(code: "NWH", name: "New Hampshire"),
+        DistributionZone(code: "NWJ", name: "New Jersey"),
+        DistributionZone(code: "NWY", name: "New York"),
+        DistributionZone(code: "OHI", name: "Ohio"),
+        DistributionZone(code: "PEN", name: "Pennsylvania"),
+        DistributionZone(code: "RHO", name: "Rhode I."),
+        DistributionZone(code: "VER", name: "Vermont"),
+        DistributionZone(code: "WVA", name: "West Virginia"),
+        DistributionZone(code: "ARI", name: "Arizona"),
+        DistributionZone(code: "CAL", name: "California"),
+        DistributionZone(code: "NEV", name: "Nevada"),
+        DistributionZone(code: "UTA", name: "Utah"),
+        DistributionZone(code: "NWM", name: "New Mexico"),
+        DistributionZone(code: "TEX", name: "Texas"),
+        DistributionZone(code: "ALA", name: "Alabama"),
+        DistributionZone(code: "ARK", name: "Arkansas"),
+        DistributionZone(code: "DEL", name: "Delaware"),
+        DistributionZone(code: "FLA", name: "Florida"),
+        DistributionZone(code: "GEO", name: "Georgia"),
+        DistributionZone(code: "KTY", name: "Kentucky"),
+        DistributionZone(code: "LOU", name: "Louisiana"),
+        DistributionZone(code: "MRY", name: "Maryland"),
+        DistributionZone(code: "MSI", name: "Mississippi"),
+        DistributionZone(code: "NCA", name: "North Carolina"),
+        DistributionZone(code: "SCA", name: "South Carolina"),
+        DistributionZone(code: "TEN", name: "Tennessee"),
+        DistributionZone(code: "VRG", name: "Virginia"),
+        DistributionZone(code: "WDC", name: "District of Columbia"),
+        DistributionZone(code: "DPS", name: "United States")
+        // DPS- version of states removed as they lack data
+]
     
-    // return the sorted array
-    return sortedDistributionZones
+    // sort the complete array
+    let sortedDistributionZones = completeDistributionZonesArray.sorted { $0.name < $1.name }
+    
+    // sort the american array
+    let sortedAmericanDistributionZone = americanDistributionZonesArray.sorted { $0.name < $1.name}
+    
+    // return the sorted array of choice
+    return sortedAmericanDistributionZone
 }
