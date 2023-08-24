@@ -49,9 +49,6 @@ struct ImageCarouselView: View {
                 }
             }
         }
-//        .sheet(item: $selectedImage) { image in
-//            ImageModalView(image: image.image)
-//        }
         .sheet(item: $selectedImage) { image in
             ImageModalView(image: image.image, plantName: plantName, imageDescription: imageDescription)
         }

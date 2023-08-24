@@ -2,22 +2,10 @@ import Foundation
 import SafariServices
 import SwiftUI
 
-//struct ImageModalView: View {
-//    var image: UIImage
-//
-//    var body: some View {
-//        // Customize the modal view here
-//        Image(uiImage: image)
-//            .resizable()
-//            .aspectRatio(contentMode: .fit)
-//            .padding()
-//    }
-//}
-
 struct ImageModalView: View {
     var image: UIImage
     var plantName: String // The plant name
-    var imageDescription: String // Image description like "Leaf", "Flower", etc.
+    var imageDescription: String // Image description like "Leaf", "Flower", ETC.
 
     @State private var showSafariView = false
 
