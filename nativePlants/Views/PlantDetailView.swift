@@ -16,6 +16,8 @@ struct PlantDetailView: View {
     @State private var fruitImages: [URL] = []
     @State private var habitImages: [URL] = []
     
+    @State private var showAmazonSearch = false
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
@@ -52,12 +54,39 @@ struct PlantDetailView: View {
                     .foregroundColor(self.nativityDetermination() == "This plant is native" ? .green : .red)
                     .fontWeight(self.nativityDetermination() == "This plant is native" ? .light : .heavy)
                 
+                // the following text has a large gap between the text and the carousel that is undesired
                 Text("Here are some images of the leaves for better identification.")
                     .underline()
+                
                 if let leafs = apiController.plantDetail?.main_species.images.leaf {
-                    ImageCarouselView(imageUrls: leafs.compactMap { URL(string: $0.image_url) })
-                        .frame(height: 300) // Adjust the frame as necessary
+                ImageCarouselView(imageUrls: leafs.compactMap { URL(string: $0.image_url) }, plantName: apiController.plantDetail?.common_name ?? "Unknown Plant", imageDescription: "Leaf")
+                    .frame(height: 300)
                 }
+                
+                // the following button needs to be centered
+                Button(action: {
+                    self.showAmazonSearch = true
+                }) {
+                    Text("Buy \(apiController.plantDetail?.common_name ?? "this plant") seeds on Amazon")
+                        .font(.headline) // Bigger font
+                        .fontWeight(.bold) // Bold font
+                        .padding()
+                        .background(
+                            LinearGradient(gradient: Gradient(colors: [Color.lightGreen, Color.deepGreen]), startPoint: .leading, endPoint: .trailing) // Gradient background
+                        )
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                        .shadow(radius: 10) // Shadow for depth
+                        .scaleEffect(1.05) // Slight scaling to make it larger
+                        .padding(.top, 10)
+                }
+                .sheet(isPresented: $showAmazonSearch) {
+                    let searchTerm = "\(apiController.plantDetail?.common_name ?? "") seeds"
+                    let formattedSearchTerm = searchTerm.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
+                    let amazonURL = URL(string: "https://www.amazon.com/s?field-keywords=\(formattedSearchTerm)")!
+                    SafariView(url: amazonURL)
+                }
+                
             }
             .padding()
             .navigationBarTitleDisplayMode(.inline)

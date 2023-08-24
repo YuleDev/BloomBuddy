@@ -9,6 +9,9 @@ struct SelectedImage: Identifiable {
 struct ImageCarouselView: View {
     @EnvironmentObject var imageCache: ImageCache
     var imageUrls: [URL]
+    
+    var plantName: String
+    var imageDescription: String
 
     @State private var showModal = false
     @State private var selectedImage: SelectedImage? = nil
@@ -25,6 +28,7 @@ struct ImageCarouselView: View {
                                 .frame(width: 150, height: 150) // Set the desired size
                                 .onTapGesture {
                                     selectedImage = SelectedImage(image: image)
+                                    showModal = true // new
                                 }
                         } else {
                             Color.clear
@@ -45,8 +49,11 @@ struct ImageCarouselView: View {
                 }
             }
         }
+//        .sheet(item: $selectedImage) { image in
+//            ImageModalView(image: image.image)
+//        }
         .sheet(item: $selectedImage) { image in
-            ImageModalView(image: image.image)
+            ImageModalView(image: image.image, plantName: plantName, imageDescription: imageDescription)
         }
     }
 }
