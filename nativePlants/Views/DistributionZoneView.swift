@@ -19,16 +19,14 @@ struct DistributionZoneView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
+            VStack(spacing: 0) {
                 SearchBar(text: $searchText)
                 List(filteredDistributionZones) { zone in
                     NavigationLink(destination: PlantListView(apiController: APIController(), selectedZone: zone.code)) {
                         Text("\(zone.name)")
                     }
-//                    .onTapGesture {
-//                        saveSelectedZone(zone: zone)
-//                    }
                 }
+              // .listStyle(.plain)  this is for removing the gray gap at the top of the list
             }
         }
     }

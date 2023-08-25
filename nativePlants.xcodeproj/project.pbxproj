@@ -29,6 +29,7 @@
 		0F5F774B2A97AB200024CCBB /* DistributionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F774A2A97AB200024CCBB /* DistributionData.swift */; };
 		0F5F774D2A97B32E0024CCBB /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F774C2A97B32E0024CCBB /* SafariView.swift */; };
 		0F5F774F2A97B85D0024CCBB /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F774E2A97B85D0024CCBB /* ColorExtension.swift */; };
+		0F5F77512A98E63F0024CCBB /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5F77502A98E63F0024CCBB /* ArrayExtension.swift */; };
 		0FA514352A70A53900A07094 /* DistributionZoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA514342A70A53900A07094 /* DistributionZoneView.swift */; };
 		0FA514372A70A64E00A07094 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA514362A70A64E00A07094 /* SearchBar.swift */; };
 		0FA514392A70A66900A07094 /* DistributionZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA514382A70A66900A07094 /* DistributionZone.swift */; };
@@ -61,6 +62,7 @@
 		0F5F774A2A97AB200024CCBB /* DistributionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistributionData.swift; sourceTree = "<group>"; };
 		0F5F774C2A97B32E0024CCBB /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		0F5F774E2A97B85D0024CCBB /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		0F5F77502A98E63F0024CCBB /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		0FA514342A70A53900A07094 /* DistributionZoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistributionZoneView.swift; sourceTree = "<group>"; };
 		0FA514362A70A64E00A07094 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		0FA514382A70A66900A07094 /* DistributionZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistributionZone.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				0FE932B62A93A4D40030766C /* CarouselImage.swift */,
 				0F5F774A2A97AB200024CCBB /* DistributionData.swift */,
 				0F5F774E2A97B85D0024CCBB /* ColorExtension.swift */,
+				0F5F77502A98E63F0024CCBB /* ArrayExtension.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				0F46CA462A4EB1C500529245 /* PlantListView.swift in Sources */,
 				0F5F774D2A97B32E0024CCBB /* SafariView.swift in Sources */,
 				0FA514372A70A64E00A07094 /* SearchBar.swift in Sources */,
+				0F5F77512A98E63F0024CCBB /* ArrayExtension.swift in Sources */,
 				0F46CA362A4E760500529245 /* AnimationView.swift in Sources */,
 				0FE932B72A93A4D40030766C /* CarouselImage.swift in Sources */,
 				0F0D99B32A29B3AF00B42E2E /* nativePlantsApp.swift in Sources */,

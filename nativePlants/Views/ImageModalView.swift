@@ -15,6 +15,9 @@ struct ImageModalView: View {
                 .edgesIgnoringSafeArea(.all)
 
             VStack {
+                Image(systemName: "chevron.compact.down")
+                    .padding(.top, 10)
+                
                 Image(uiImage: image)
                     .resizable()
                     .aspectRatio(contentMode: .fit)

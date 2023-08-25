@@ -17,6 +17,7 @@ struct ImageCarouselView: View {
     @State private var selectedImage: SelectedImage? = nil
 
     var body: some View {
+        
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 10) {
                 ForEach(imageUrls, id: \.absoluteString) { url in
@@ -24,8 +25,11 @@ struct ImageCarouselView: View {
                         if let image = imageCache.get(for: url.absoluteString) {
                             Image(uiImage: image)
                                 .resizable()
-                                .aspectRatio(contentMode: .fit) // Maintain aspect ratio
+                                .scaledToFill()
+                                // .aspectRatio(contentMode: .fit) -- This maintains aspect ratio
                                 .frame(width: 150, height: 150) // Set the desired size
+                                .clipped()
+                                .cornerRadius(10)
                                 .onTapGesture {
                                     selectedImage = SelectedImage(image: image)
                                     showModal = true // new
@@ -44,7 +48,7 @@ struct ImageCarouselView: View {
                                     .resume()
                             }
                         }
-                    }
+                   }
                     .frame(width: 150, height: 150) // Ensure consistent size
                 }
             }

@@ -34,3 +34,13 @@ struct Plant: Codable, Identifiable {
         }
     }
 }
+
+extension Plant: Hashable {
+    static func == (lhs: Plant, rhs: Plant) -> Bool {
+        return lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}

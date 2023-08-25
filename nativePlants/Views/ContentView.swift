@@ -17,7 +17,7 @@ struct ContentView: View {
                     .font(.headline)
                     .foregroundColor(.green)
             }
-            .padding(.top, 50)
+            .padding(.top, 10)
             
             // AnimationView(animationController: animationController)
             // PlantListView(apiController: apiController)
