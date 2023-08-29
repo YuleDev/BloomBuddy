@@ -6,6 +6,7 @@ struct ContentView: View {
     @StateObject private var apiController = APIController()
     
     var body: some View {
+        //move nav stack up to move back button into top right corner use . nav button hidden
         VStack {
             VStack{
                 Text("Bloom Buddy")
@@ -18,9 +19,6 @@ struct ContentView: View {
                     .foregroundColor(.green)
             }
             .padding(.top, 10)
-            
-            // AnimationView(animationController: animationController)
-            // PlantListView(apiController: apiController)
             
             DistributionZoneView()
         }

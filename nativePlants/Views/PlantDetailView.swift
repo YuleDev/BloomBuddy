@@ -1,6 +1,9 @@
 import Foundation
 import Combine
 import SwiftUI
+import SafariServices
+
+// add favorite tab?
 
 struct PlantDetailView: View {
     let selectedZone = UserDefaults.standard.string(forKey: "selectedZone")
@@ -10,87 +13,95 @@ struct PlantDetailView: View {
     @State var isImageLoading: Bool = true
     let plant: Plant
     
-// changed code so below isnt neccessary
-//    @State private var leafImages: [URL] = []
-//    @State private var barkImages: [URL] = []
-//    @State private var flowerImages: [URL] = []
-//    @State private var fruitImages: [URL] = []
-//    @State private var habitImages: [URL] = []
+    @State private var showLeavesImages: Bool = false
+    @State private var showFlowerImages: Bool = false
+    @State private var showBarkImages: Bool = false
+    @State private var showFruitImages: Bool = false
     
     @State private var showAmazonSearch = false
+    @State private var showSafariView = false
+
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
                 HStack {
                     Spacer()
-                    if let urlString = apiController.plantDetail?.image_url, let url = URL(string: urlString) {
-                        if let image = imageCache.get(for: url.absoluteString) {
-                            Image(uiImage: image)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 300, height: 300)
-                                .clipped()
-                                .cornerRadius(10)
-                        } else {
-                            ProgressView()
-                                .onAppear {
-                                    URLSession.shared.dataTask(with: url) { (data, response, error) in
-                                        if let data = data, let image = UIImage(data: data) {
-                                            DispatchQueue.main.async { // ensure you are performing UI updates on main thread.
-                                                imageCache.add(image, for: url.absoluteString)
+                    ZStack {
+                        // Default Gray Image
+                        Rectangle()
+                            .fill(Color.gray)
+                            .frame(width: 300, height: 300)
+                            .cornerRadius(10)
+
+                        if let urlString = apiController.plantDetail?.image_url, let url = URL(string: urlString) {
+                            if let image = imageCache.get(for: url.absoluteString) {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 300, height: 300)
+                                    .clipped()
+                                    .cornerRadius(10)
+                            } else {
+                                // Progress Wheel
+                                ProgressView()
+                                    .onAppear {
+                                        URLSession.shared.dataTask(with: url) { (data, response, error) in
+                                            if let data = data, let image = UIImage(data: data) {
+                                                DispatchQueue.main.async {
+                                                    imageCache.add(image, for: url.absoluteString)
+                                                }
                                             }
                                         }
-                                    }
                                     .resume()
                                 }
+                            }
                         }
                     }
                     Spacer()
                 }
                 
-                // Title for plant, IE Common name of plant.
-                HStack{
-                    Spacer()
-                    Text(apiController.plantDetail?.common_name ?? "No common name")
-                        .font(.title)
-                    Spacer()
+                if apiController.plantDetail == nil {
+                    HStack{
+                        Spacer()
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .green))
+                            .scaleEffect(2)
+                        Spacer()
+                    }
+
+                } else {
+                    
+                    Group{
+                        // Title for plant, IE Common name of plant.
+                        HStack{
+                            Spacer()
+                            Text(apiController.plantDetail?.common_name ?? "No common name")
+                                .font(.title)
+                            Spacer()
+                        }
+                        HStack{
+                            Spacer()
+                            Text(" Scientific name: \(apiController.plantDetail?.scientific_name ?? "No scientific name")")
+                                .font(.headline)
+                            Spacer()
+                        }
+                        HStack{
+                            Spacer()
+                            Text("nativity: \(nativityDetermination())")
+                                .foregroundColor(self.nativityDetermination() == "This plant is native" ? .green : .red)
+                                .fontWeight(self.nativityDetermination() == "This plant is native" ? .light : .heavy)
+                            Spacer()
+                        }
+                    }
                 }
-                
-                Group{
-                    HStack{
-                        Spacer()
-                        Text(" Scientific name: \(apiController.plantDetail?.scientific_name ?? "No scientific name")")
-                            .font(.headline)
-                        Spacer()
-                    }
-                    HStack{
-                        Spacer()
-                        Text(verbatim: "Identity Number: \(plant.id)")
-                            .font(.subheadline)
-                        Spacer()
-                    }
-                    HStack{
-                        Spacer()
-                        Text("This plant has been observed commonly in: \(apiController.plantDetail?.observations ?? "No observations")")
-                            .font(.subheadline)
-                        Spacer()
-                    }
-                    HStack{
-                        Spacer()
-                        Text("nativity: \(nativityDetermination())")
-                            .foregroundColor(self.nativityDetermination() == "This plant is native" ? .green : .red)
-                            .fontWeight(self.nativityDetermination() == "This plant is native" ? .light : .heavy)
-                        Spacer()
-                    }
-                }
-                
+        
                 Group{
                     // checks for if the plant is a vegetable
                     if let veggeBool = apiController.plantDetail?.vegetable {
                         HStack{
                             Spacer()
-                            Text(veggeBool ? "This plant is considered a vegetable" : "This plant is not considered a vegetable.")
+                            Text(veggeBool ? "This plant is considered a vegetable!" : "This plant is not considered a vegetable.")
                             Spacer()
                         }
                     }
@@ -99,86 +110,133 @@ struct PlantDetailView: View {
                     if let ediblePlant = apiController.plantDetail?.main_species.edible, let commonName = apiController.plantDetail?.common_name {
                         HStack{
                             Spacer()
-                            Text(ediblePlant ? "\(commonName) Is Edible" : "\(commonName) is not edible")
+                            Text(ediblePlant ? "\(commonName) Is Edible!" : "\(commonName) is not edible!")
                             Spacer()
                         }
                     }
                 }
                 
                 Group {
+                    
                     // checks for leaf images, then displays found images in a carousel
-                    if let leafs = apiController.plantDetail?.main_species.images.leaf {
-                        HStack{
-                            Spacer()
-                            Text("Images for identification of leaves")
-                                .underline()
-                            Spacer()
+                    HStack{
+                        Spacer()
+                        DisclosureGroup("Images for identification of leaves.", isExpanded: $showLeavesImages) {
+                            if let leafs = apiController.plantDetail?.main_species.images.leaf {
+                                ImageCarouselView(imageUrls: leafs.compactMap { URL(string: $0.image_url) }, plantName: apiController.plantDetail?.common_name ?? "Unknown Plant", imageDescription: "Leaf")
+                                    .frame(height: 150)
+                            }
                         }
-                        
-                        ImageCarouselView(imageUrls: leafs.compactMap { URL(string: $0.image_url) }, plantName: apiController.plantDetail?.common_name ?? "Unknown Plant", imageDescription: "Leaf")
-                            .frame(height: 150)
+                        .font(.headline)
+                        .foregroundColor(.green)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .buttonStyle(.bordered)
+                        .controlSize(.large)
+                        .accentColor(.green)
+                        Spacer()
                     }
                     
-                    // checks for flower images, then displays tfound images in a carousel
-                    if let flowers = apiController.plantDetail?.main_species.images.flower {
-                        HStack{
-                            Spacer()
-                            Text("Images for identification of flowers")
-                                .underline()
-                            Spacer()
-                        }
-                        
-                        ImageCarouselView(imageUrls: flowers.compactMap { URL(string: $0.image_url) }, plantName: apiController.plantDetail?.common_name ?? "Unknown Plant", imageDescription: "Flower")
-                            .frame(height: 150)
+                    // checks for flower images, then displays found images in a carousel
+                    HStack{
+                        Spacer()
+                        DisclosureGroup("Images for identification of flowers.", isExpanded: $showFlowerImages) {
+                                      if let flowers = apiController.plantDetail?.main_species.images.flower {
+                                          ImageCarouselView(imageUrls: flowers.compactMap { URL(string: $0.image_url) }, plantName: apiController.plantDetail?.common_name ?? "Unknown Plant", imageDescription: "Flower")
+                                              .frame(height: 150)
+                                      }
+                                  }
+                        .font(.headline)
+                        .foregroundColor(.green)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .buttonStyle(.bordered)
+                        .controlSize(.large)
+                        .accentColor(.green)
+                        Spacer()
                     }
                     
-                    // checks for bark images, then displays tfound images in a carousel
-                    if let barks = apiController.plantDetail?.main_species.images.bark {
-                        HStack{
-                            Spacer()
-                            Text("Images for identification of the bark")
-                                .underline()
-                            Spacer()
-                        }
-                        
-                        ImageCarouselView(imageUrls: barks.compactMap { URL(string: $0.image_url) }, plantName: apiController.plantDetail?.common_name ?? "Unknown Plant", imageDescription: "Bark")
-                            .frame(height: 150)
+                    // checks for bark images, then displays found images in a carousel
+                    HStack{
+                        Spacer()
+                        DisclosureGroup("Images for identification of bark.", isExpanded: $showBarkImages) {
+                                      if let bark = apiController.plantDetail?.main_species.images.bark {
+                                          ImageCarouselView(imageUrls: bark.compactMap { URL(string: $0.image_url) }, plantName: apiController.plantDetail?.common_name ?? "Unknown Plant", imageDescription: "Bark")
+                                              .frame(height: 150)
+                                      }
+                                  }
+                        .font(.headline)
+                        .foregroundColor(.green)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .buttonStyle(.bordered)
+                        .controlSize(.large)
+                        .accentColor(.green)
+                        Spacer()
                     }
                     
                     // checks for fruit images, then displays tfound images in a carousel
-                    if let fruits = apiController.plantDetail?.main_species.images.fruit {
-                        HStack{
-                            Spacer()
-                            Text("Images for identification of fruits / blooms.")
-                                .underline()
-                            Spacer()
-                        }
-                        
-                        ImageCarouselView(imageUrls: fruits.compactMap { URL(string: $0.image_url) }, plantName: apiController.plantDetail?.common_name ?? "Unknown Plant", imageDescription: "Fruits")
-                            .frame(height: 150)
+                    HStack{
+                        Spacer()
+                        DisclosureGroup("Images for identification of bloom/fruit.", isExpanded: $showFruitImages) {
+                                      if let fruit = apiController.plantDetail?.main_species.images.fruit {
+                                          ImageCarouselView(imageUrls: fruit.compactMap { URL(string: $0.image_url) }, plantName: apiController.plantDetail?.common_name ?? "Unknown Plant", imageDescription: "Fruit")
+                                              .frame(height: 150)
+                                      }
+                                  }
+                        .font(.headline)
+                        .foregroundColor(.green)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .buttonStyle(.bordered)
+                        .controlSize(.large)
+                        .accentColor(.green)
+                        Spacer()
                     }
                 }
                 
                 // Button for amazon link to seeds for plant.
                 Group{
-                    HStack {
+                    HStack{
                         Spacer()
+                        // for the wikipedia article for the plant
                         Button(action: {
-                            self.showAmazonSearch = true
+                            showSafariView = true
                         }) {
-                            Text("Buy \(apiController.plantDetail?.common_name ?? "this plant") seeds on Amazon")
-                                .font(.headline) // Bigger font
-                                .fontWeight(.bold) // Bold font
+                            Image("wikipedia")
+                                .resizable()
+                                .frame(width: 40, height: 40)
                                 .padding()
                                 .background(
-                                    LinearGradient(gradient: Gradient(colors: [Color.lightGreen, Color.deepGreen]), startPoint: .leading, endPoint: .trailing) // Gradient background
+                                    LinearGradient(gradient: Gradient(colors: [Color.deepGreen, Color.lightGreen]), startPoint: .leading, endPoint: .trailing) // Gradient background
                                 )
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .padding(.top, 10)
                                 .foregroundColor(.white)
                                 .cornerRadius(10)
                                 .shadow(radius: 10) // Shadow for depth
                                 .scaleEffect(1.05) // Slight scaling to make it larger
-                                .padding(.top, 10)
                         }
+                    
+                    .sheet(isPresented: $showSafariView) {
+                        SafariView(url: URL(string: "https://en.wikipedia.org/wiki/\(String(describing: plant.commonName!.replacingOccurrences(of: " ", with: "_")))")!)
+                    }
+                    Spacer()
+                    
+                        // the amazon button
+                        Button(action: {
+                            self.showAmazonSearch = true
+                        }) {
+                                Image("cart")
+                                    .resizable()
+                                    .frame(width: 40, height: 40)
+                                    .padding()
+                                    .background(
+                                        LinearGradient(gradient: Gradient(colors: [Color.lightGreen, Color.deepGreen]), startPoint: .leading, endPoint: .trailing) // Gradient background
+                                    )
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    .padding(.top, 10)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
+                                    .shadow(radius: 10) // Shadow for depth
+                                    .scaleEffect(1.05) // Slight scaling to make it larger
+                            }
                         Spacer()
                     }
                     .sheet(isPresented: $showAmazonSearch) {
@@ -187,7 +245,6 @@ struct PlantDetailView: View {
                         let amazonURL = URL(string: "https://www.amazon.com/s?field-keywords=\(formattedSearchTerm)")!
                         SafariView(url: amazonURL)
                     }
-                    
                 }
                 .padding()
                 .navigationBarTitleDisplayMode(.inline)
