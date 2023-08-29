@@ -26,7 +26,7 @@ struct DistributionZoneView: View {
                         Text("\(zone.name)")
                     }
                 }
-              // .listStyle(.plain)  this is for removing the gray gap at the top of the list
+               .listStyle(.plain) // this is for removing the gray gap at the top of the list
             }
         }
     }

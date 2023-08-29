@@ -23,7 +23,7 @@ struct PlantListView: View {
                     }
                 }
             }
-        // .listStyle(.plain)  this is for removing the gray gap at the top of the list
+         .listStyle(.plain)  // this is for removing the gray gap at the top of the list
             .onAppear {
                 self.apiController.currentDistributionZone = self.selectedZone // Set the current distribution zone
                 self.apiController.fetchPlantList(fromDistributionZone: selectedZone)

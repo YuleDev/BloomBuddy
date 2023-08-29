@@ -3,7 +3,7 @@ import Combine
 import SwiftUI
 import SafariServices
 
-// add favorite tab?
+// CORRECT LACK OF SPACE ON UPPER OF IMAGE IN CAROUSELS
 
 struct PlantDetailView: View {
     let selectedZone = UserDefaults.standard.string(forKey: "selectedZone")
@@ -101,17 +101,18 @@ struct PlantDetailView: View {
                     if let veggeBool = apiController.plantDetail?.vegetable {
                         HStack{
                             Spacer()
-                            Text(veggeBool ? "This plant is considered a vegetable!" : "This plant is not considered a vegetable.")
+                            // shrink down sentance size, maybe user one word and a icon like an x or checkmark
+                            Text(veggeBool ? "Vegetable: 👍" : "Vegetable: 👎")
                             Spacer()
-                        }
-                    }
-                    
-                    // checks for if the plant is edible
-                    if let ediblePlant = apiController.plantDetail?.main_species.edible, let commonName = apiController.plantDetail?.common_name {
-                        HStack{
-                            Spacer()
-                            Text(ediblePlant ? "\(commonName) Is Edible!" : "\(commonName) is not edible!")
-                            Spacer()
+                            
+                            
+                            
+                            // checks for if the plant is edible
+                            if let ediblePlant = apiController.plantDetail?.main_species.edible, let commonName = apiController.plantDetail?.common_name {
+                                // shrink down sentance size, maybe user one word and a icon like an x or checkmark, also color IE red equals bad, thumbs up symbol?
+                                Text(ediblePlant ? "Edible: 👍" : "Edible: 👎")
+                                Spacer()
+                            }
                         }
                     }
                 }
